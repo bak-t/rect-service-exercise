@@ -1,4 +1,4 @@
-﻿namespace RectExercise.WebApi.Host.DTO
+﻿namespace RectExercise.Application.Contract.DTO
 {
     public record RectangleDto(PointDto TopLeft, PointDto BottomRight);
 }

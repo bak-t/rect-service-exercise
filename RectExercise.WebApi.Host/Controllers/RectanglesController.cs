@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using RectExercise.WebApi.Host.DTO;
+using RectExercise.Application.Contract.DTO;
+using RectExercise.Application.Contract.Interfaces;
 
 namespace RectExercise.WebApi.Host.Controllers
 {
@@ -8,23 +9,18 @@ namespace RectExercise.WebApi.Host.Controllers
     public class RectanglesController : ControllerBase
     {
         private readonly ILogger<RectanglesController> _logger;
+        private readonly IRectanglesService _rectanglesService;
 
-        public RectanglesController(ILogger<RectanglesController> logger)
+        public RectanglesController(
+            ILogger<RectanglesController> logger,
+            IRectanglesService rectanglesService)
         {
             _logger = logger;
+            _rectanglesService = rectanglesService;
         }
 
         [HttpPost("find-by-points")]
-        public IEnumerable<PointMatchDto> GetByMatchingPoints(IReadOnlyList<PointDto> points)
-        {
-            return points
-                .Take(Random.Shared.Next(points.Count))
-                .Select(x => new PointMatchDto(x, new[] {
-                    new RectangleDto(
-                        new PointDto(1, 2),
-                        new PointDto(4, 5))
-                }))
-                .ToList();
-        }
+        public Task<IEnumerable<PointMatchDto>> GetByMatchingPoints(IReadOnlyList<PointDto> points)
+            => _rectanglesService.GetRectanglesByMatchingPointsAsync(points);
     }
 }
