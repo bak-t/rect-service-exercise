@@ -1,6 +1,6 @@
 ﻿using RectExercise.Application.Contract.DTO;
 
-namespace RectExercise.Application.Contract.Interfaces
+namespace RectExercise.Application.Contract.Services
 {
     public interface IRectanglesService
     {

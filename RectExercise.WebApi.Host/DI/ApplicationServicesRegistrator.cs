@@ -1,4 +1,4 @@
-﻿using RectExercise.Application.Contract.Interfaces;
+﻿using RectExercise.Application.Contract.Services;
 using RectExercise.Application.Implementation.Services;
 
 namespace RectExercise.WebApi.Host.DI

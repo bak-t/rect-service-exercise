@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RectExercise.Application.Contract.DTO;
-using RectExercise.Application.Contract.Interfaces;
+using RectExercise.Application.Contract.Services;
 
 namespace RectExercise.WebApi.Host.Controllers
 {

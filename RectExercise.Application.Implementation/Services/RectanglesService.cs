@@ -1,5 +1,5 @@
 ﻿using RectExercise.Application.Contract.DTO;
-using RectExercise.Application.Contract.Interfaces;
+using RectExercise.Application.Contract.Services;
 
 namespace RectExercise.Application.Implementation.Services
 {
