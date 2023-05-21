@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RectExercise.Application.Contract\RectExercise.Application.Contract.csproj" />
     <ProjectReference Include="..\RectExercise.Data.Contract\RectExercise.Data.Contract.csproj" />
   </ItemGroup>
 
