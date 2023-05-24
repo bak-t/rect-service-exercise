@@ -17,5 +17,11 @@ namespace RectExercise.WebApi.Host.DI
                     optionsBuilder.UseSqlServer(config.GetConnectionString("RectDb"));
                 });
         }
+
+        public static Task InitializeDBAsync(this IServiceProvider serviceProvider)
+        {
+            var dbContext = serviceProvider.GetRequiredService<RectDbContext>();
+            return dbContext.Database.MigrateAsync();
+        }
     }
 }

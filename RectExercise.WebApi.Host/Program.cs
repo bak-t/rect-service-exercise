@@ -2,7 +2,7 @@ using RectExercise.WebApi.Host.DI;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +24,11 @@ internal class Program
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+
+            using (var serviceScope = app.Services.CreateScope())
+            {
+                await serviceScope.ServiceProvider.InitializeDBAsync();
+            }
         }
 
         app.UseHttpsRedirection();
@@ -32,6 +37,6 @@ internal class Program
 
         app.MapControllers();
 
-        app.Run();
+        await app.RunAsync();
     }
 }
