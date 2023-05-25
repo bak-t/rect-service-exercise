@@ -16,8 +16,8 @@ namespace RectExercise.Data.Implementation.EF.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Top = table.Column<int>(type: "int", nullable: false),
                     Left = table.Column<int>(type: "int", nullable: false),
+                    Top = table.Column<int>(type: "int", nullable: false),
                     Right = table.Column<int>(type: "int", nullable: false),
                     Bottom = table.Column<int>(type: "int", nullable: false)
                 },

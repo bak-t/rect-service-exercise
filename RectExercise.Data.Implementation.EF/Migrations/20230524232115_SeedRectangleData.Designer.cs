@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RectExercise.Data.Implementation.EF.Database;
 
@@ -11,9 +12,11 @@ using RectExercise.Data.Implementation.EF.Database;
 namespace RectExercise.Data.Implementation.EF.Migrations
 {
     [DbContext(typeof(RectDbContext))]
-    partial class RectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230524232115_SeedRectangleData")]
+    partial class SeedRectangleData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +45,7 @@ namespace RectExercise.Data.Implementation.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Rectangles", (string)null);
+                    b.ToTable("Rectangles");
                 });
 #pragma warning restore 612, 618
         }

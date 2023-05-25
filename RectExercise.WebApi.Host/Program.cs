@@ -19,16 +19,16 @@ internal class Program
 
         var app = builder.Build();
 
+        using (var serviceScope = app.Services.CreateScope())
+        {
+            await serviceScope.ServiceProvider.InitializeDBAsync();
+        }
+
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
             app.UseSwaggerUI();
-
-            using (var serviceScope = app.Services.CreateScope())
-            {
-                await serviceScope.ServiceProvider.InitializeDBAsync();
-            }
         }
 
         app.UseHttpsRedirection();
