@@ -20,7 +20,7 @@ namespace RectExercise.WebApi.Host.Controllers
         }
 
         [HttpPost("find-by-points")]
-        public Task<IEnumerable<PointMatchDto>> GetByMatchingPoints(IReadOnlyList<PointDto> points)
-            => _rectanglesService.GetRectanglesByMatchingPointsAsync(points);
+        public Task<IEnumerable<PointMatchDto>> GetByMatchingPoints(IReadOnlyList<PointDto> points, CancellationToken cancellationToken)
+            => _rectanglesService.GetRectanglesByMatchingPointsAsync(points, cancellationToken);
     }
 }

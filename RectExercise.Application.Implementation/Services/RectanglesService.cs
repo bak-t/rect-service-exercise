@@ -13,9 +13,9 @@ namespace RectExercise.Application.Implementation.Services
             _rectanglesRepository = rectanglesRepository;
         }
 
-        public async Task<IEnumerable<PointMatchDto>> GetRectanglesByMatchingPointsAsync(IReadOnlyList<PointDto> points)
+        public async Task<IEnumerable<PointMatchDto>> GetRectanglesByMatchingPointsAsync(IReadOnlyList<PointDto> points, CancellationToken cancellationToken)
         {
-            var rectangles = await _rectanglesRepository.GetRectanglesByMatchingPointsAsync(points);
+            var rectangles = await _rectanglesRepository.GetRectanglesByMatchingPointsAsync(points, cancellationToken);
             // TODO: match points & rectangles
 
             return points

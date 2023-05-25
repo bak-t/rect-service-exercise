@@ -14,7 +14,7 @@ namespace RectExercise.Data.Implementation.EF.Repositories
             _dbContext = dbContext;
         }
 
-        public Task<IEnumerable<Rectangle>> GetRectanglesByMatchingPointsAsync(IReadOnlyList<PointDto> points)
+        public Task<IEnumerable<Rectangle>> GetRectanglesByMatchingPointsAsync(IReadOnlyList<PointDto> points, CancellationToken cancellationToken)
         {
             return Task.FromResult<IEnumerable<Rectangle>>(
                 points
