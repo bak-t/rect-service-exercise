@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RectExercise.Application.Implementation\RectExercise.Application.Implementation.csproj" />
     <ProjectReference Include="..\RectExercise.Data.Implementation.EF\RectExercise.Data.Implementation.EF.csproj" />
+    <ProjectReference Include="..\RectExercise.Domain.Implementation\RectExercise.Domain.Implementation.csproj" />
   </ItemGroup>
 
 </Project>

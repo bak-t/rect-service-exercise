@@ -15,7 +15,8 @@ internal class Program
 
         builder.Services
             .RegisterApplicationServices()
-            .RegisterDataServices();
+            .RegisterDataServices()
+            .RegisterDomainServices();
 
         var app = builder.Build();
 

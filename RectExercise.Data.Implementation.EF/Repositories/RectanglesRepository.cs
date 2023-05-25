@@ -1,9 +1,10 @@
 ﻿using LinqKit;
 using Microsoft.EntityFrameworkCore;
 using RectExercise.Application.Contract.DTO;
-using RectExercise.Data.Contract.Models;
 using RectExercise.Data.Contract.Repositories;
 using RectExercise.Data.Implementation.EF.Database;
+using RectExercise.Domain.Contract.Models;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace RectExercise.Data.Implementation.EF.Repositories

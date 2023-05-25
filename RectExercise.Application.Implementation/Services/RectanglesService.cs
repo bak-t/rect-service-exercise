@@ -1,31 +1,34 @@
 ﻿using RectExercise.Application.Contract.DTO;
 using RectExercise.Application.Contract.Services;
-using RectExercise.Data.Contract.Models;
 using RectExercise.Data.Contract.Repositories;
+using RectExercise.Domain.Contract.Models;
+using RectExercise.Domain.Contract.Services;
 
 namespace RectExercise.Application.Implementation.Services
 {
     public class RectanglesService : IRectanglesService
     {
         private readonly IRectanglesRepository _rectanglesRepository;
+        private readonly IRectanglesDomainService _rectangleDomainService;
 
-        public RectanglesService(IRectanglesRepository rectanglesRepository)
+        public RectanglesService(
+            IRectanglesRepository rectanglesRepository,
+            IRectanglesDomainService rectangleDomainService)
         {
             _rectanglesRepository = rectanglesRepository;
+            _rectangleDomainService = rectangleDomainService;
         }
 
         public async Task<IEnumerable<PointMatchDto>> GetRectanglesByMatchingPointsAsync(IReadOnlyList<PointDto> points, CancellationToken cancellationToken)
         {
-            var rectangles = (await _rectanglesRepository.GetRectanglesByMatchingPointsAsync(points, cancellationToken))
-                .Select(ConvertToRectangleDto)
-                .ToList();
+            var rectangles = await _rectanglesRepository.GetRectanglesByMatchingPointsAsync(points, cancellationToken);
 
             return points
                 .Select(point => new PointMatchDto(
                     Point: point,
                     MatchingRectangles: rectangles
-                        .Where(rect => point.X >= rect.TopLeft.X && point.X <= rect.BottomRight.X &&
-                            point.Y >= rect.TopLeft.Y && point.Y <= rect.BottomRight.Y)
+                        .Where(rect => _rectangleDomainService.RectangleContainsPoint(rect, point.X, point.Y))
+                        .Select(ConvertToRectangleDto)
                         .ToList()));
         }
 

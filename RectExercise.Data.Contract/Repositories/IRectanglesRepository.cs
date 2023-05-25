@@ -1,5 +1,5 @@
 ﻿using RectExercise.Application.Contract.DTO;
-using RectExercise.Data.Contract.Models;
+using RectExercise.Domain.Contract.Models;
 
 namespace RectExercise.Data.Contract.Repositories
 {

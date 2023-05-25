@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RectExercise.Data.Contract.Models;
+using RectExercise.Domain.Contract.Models;
 
 namespace RectExercise.Data.Implementation.EF.Database
 {

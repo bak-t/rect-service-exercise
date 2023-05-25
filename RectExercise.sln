@@ -5,17 +5,23 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectExercise.WebApi.Host", "RectExercise.WebApi.Host\RectExercise.WebApi.Host.csproj", "{10163CEE-9BD9-49A8-B817-B452CB7F9FDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectExercise.Application.Contract", "RectExercise.Application.Contract\RectExercise.Application.Contract.csproj", "{61BA9CF3-DBE3-4A6E-93F3-C4698E4B20E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectExercise.Application.Contract", "RectExercise.Application.Contract\RectExercise.Application.Contract.csproj", "{61BA9CF3-DBE3-4A6E-93F3-C4698E4B20E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectExercise.Application.Implementation", "RectExercise.Application.Implementation\RectExercise.Application.Implementation.csproj", "{6E5E79B3-B3C2-426F-9741-915F1A4002A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectExercise.Application.Implementation", "RectExercise.Application.Implementation\RectExercise.Application.Implementation.csproj", "{6E5E79B3-B3C2-426F-9741-915F1A4002A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{99455A94-C1C3-4F91-8CF4-081FC582C407}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectExercise.Data.Contract", "RectExercise.Data.Contract\RectExercise.Data.Contract.csproj", "{F1AC9D5F-4948-44A7-AADA-2FCF6E356C8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectExercise.Data.Contract", "RectExercise.Data.Contract\RectExercise.Data.Contract.csproj", "{F1AC9D5F-4948-44A7-AADA-2FCF6E356C8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectExercise.Data.Implementation.EF", "RectExercise.Data.Implementation.EF\RectExercise.Data.Implementation.EF.csproj", "{5A5A5E60-D252-4362-9EEC-7953BBF16576}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectExercise.Data.Implementation.EF", "RectExercise.Data.Implementation.EF\RectExercise.Data.Implementation.EF.csproj", "{5A5A5E60-D252-4362-9EEC-7953BBF16576}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{D95B0BBA-6841-4E79-8277-A30CA9D06ACA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A51123D8-313D-4FCB-9578-3610C7FF56B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectExercise.Domain.Contract", "RectExercise.Domain.Contract\RectExercise.Domain.Contract.csproj", "{94D28043-DAFE-49C9-B2EC-8F8D5E642987}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectExercise.Domain.Implementation", "RectExercise.Domain.Implementation\RectExercise.Domain.Implementation.csproj", "{A9834B8E-3CCC-4032-B38B-792775838CAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +49,14 @@ Global
 		{5A5A5E60-D252-4362-9EEC-7953BBF16576}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A5A5E60-D252-4362-9EEC-7953BBF16576}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A5A5E60-D252-4362-9EEC-7953BBF16576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D28043-DAFE-49C9-B2EC-8F8D5E642987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D28043-DAFE-49C9-B2EC-8F8D5E642987}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D28043-DAFE-49C9-B2EC-8F8D5E642987}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D28043-DAFE-49C9-B2EC-8F8D5E642987}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9834B8E-3CCC-4032-B38B-792775838CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9834B8E-3CCC-4032-B38B-792775838CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9834B8E-3CCC-4032-B38B-792775838CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9834B8E-3CCC-4032-B38B-792775838CAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +66,8 @@ Global
 		{6E5E79B3-B3C2-426F-9741-915F1A4002A5} = {99455A94-C1C3-4F91-8CF4-081FC582C407}
 		{F1AC9D5F-4948-44A7-AADA-2FCF6E356C8B} = {D95B0BBA-6841-4E79-8277-A30CA9D06ACA}
 		{5A5A5E60-D252-4362-9EEC-7953BBF16576} = {D95B0BBA-6841-4E79-8277-A30CA9D06ACA}
+		{94D28043-DAFE-49C9-B2EC-8F8D5E642987} = {A51123D8-313D-4FCB-9578-3610C7FF56B8}
+		{A9834B8E-3CCC-4032-B38B-792775838CAA} = {A51123D8-313D-4FCB-9578-3610C7FF56B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4CA4EFF-8EA3-4032-978A-D6C188728C8C}

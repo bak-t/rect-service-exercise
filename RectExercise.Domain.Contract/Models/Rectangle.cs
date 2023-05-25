@@ -1,4 +1,4 @@
-﻿namespace RectExercise.Data.Contract.Models
+﻿namespace RectExercise.Domain.Contract.Models
 {
     public class Rectangle : IEntity
     {
