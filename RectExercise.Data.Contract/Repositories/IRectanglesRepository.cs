@@ -5,6 +5,6 @@ namespace RectExercise.Data.Contract.Repositories
 {
     public interface IRectanglesRepository
     {
-        Task<IEnumerable<Rectangle>> GetRectanglesByMatchingPointsAsync(IReadOnlyList<PointDto> points, CancellationToken cancellationToken);
+        Task<IReadOnlyList<Rectangle>> GetRectanglesByMatchingPointsAsync(IReadOnlyList<PointDto> points, CancellationToken cancellationToken);
     }
 }

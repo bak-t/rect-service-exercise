@@ -1,7 +1,10 @@
-﻿using RectExercise.Application.Contract.DTO;
+﻿using LinqKit;
+using Microsoft.EntityFrameworkCore;
+using RectExercise.Application.Contract.DTO;
 using RectExercise.Data.Contract.Models;
 using RectExercise.Data.Contract.Repositories;
 using RectExercise.Data.Implementation.EF.Database;
+using System.Linq.Expressions;
 
 namespace RectExercise.Data.Implementation.EF.Repositories
 {
@@ -14,19 +17,19 @@ namespace RectExercise.Data.Implementation.EF.Repositories
             _dbContext = dbContext;
         }
 
-        public Task<IEnumerable<Rectangle>> GetRectanglesByMatchingPointsAsync(IReadOnlyList<PointDto> points, CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<Rectangle>> GetRectanglesByMatchingPointsAsync(IReadOnlyList<PointDto> points, CancellationToken cancellationToken)
         {
-            return Task.FromResult<IEnumerable<Rectangle>>(
-                points
-                    .Take(Random.Shared.Next(points.Count))
-                    .Select(x => new Rectangle
-                    {
-                        Left = 1,
-                        Top = 2,
-                        Right = 4,
-                        Bottom = 5,
-                    })
-                    .ToList());
+            var containsPointsPredicate = points
+                .Select(ConvertToPredicateExpression)
+                .Aggregate(PredicateBuilder.New<Rectangle>(), (result, expr) => result.Or(expr));
+
+            return await _dbContext.Rectangles
+                .Where(containsPointsPredicate)
+                .ToListAsync(cancellationToken);
+
+            static Expression<Func<Rectangle, bool>> ConvertToPredicateExpression(PointDto point) =>
+                rect => point.X >= rect.Left && point.X <= rect.Right &&
+                    point.Y >= rect.Top && point.Y <= rect.Bottom;
         }
     }
 }

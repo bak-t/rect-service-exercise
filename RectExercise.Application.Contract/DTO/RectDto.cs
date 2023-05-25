@@ -1,4 +1,4 @@
 ﻿namespace RectExercise.Application.Contract.DTO
 {
-    public record RectangleDto(PointDto TopLeft, PointDto BottomRight);
+    public record RectangleDto(Guid Id, PointDto TopLeft, PointDto BottomRight);
 }
