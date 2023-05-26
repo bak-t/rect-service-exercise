@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RectExercise.Data.Implementation.EF.Database;
 
@@ -11,9 +12,11 @@ using RectExercise.Data.Implementation.EF.Database;
 namespace RectExercise.Data.Implementation.EF.Migrations
 {
     [DbContext(typeof(RectDbContext))]
-    partial class RectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230526171229_AddIndexToRectangleCoordinates")]
+    partial class AddIndexToRectangleCoordinates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
