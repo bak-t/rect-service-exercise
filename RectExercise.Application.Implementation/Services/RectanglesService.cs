@@ -21,6 +21,9 @@ namespace RectExercise.Application.Implementation.Services
 
         public async Task<IEnumerable<PointMatchDto>> GetRectanglesByMatchingPointsAsync(IReadOnlyList<PointDto> points, CancellationToken cancellationToken)
         {
+            if (points == null) throw new ArgumentNullException(nameof(points));
+            if (points.Count == 0) throw new ArgumentException("List of points mustn't be empty", nameof(points));
+
             var rectangles = await _rectanglesRepository.GetRectanglesByMatchingPointsAsync(points, cancellationToken);
 
             return points
