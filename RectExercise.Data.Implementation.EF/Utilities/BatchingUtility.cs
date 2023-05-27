@@ -1,0 +1,32 @@
+﻿namespace RectExercise.Data.Implementation.EF.Utilities
+{
+    public static class BatchingUtility
+    {
+        public static IAsyncEnumerable<TResultItem> WithBatchAsync<TInputItem, TResultItem>(
+            IEnumerable<TInputItem> input,
+            int batchSize,
+            Func<IReadOnlyList<TInputItem>, Task<IEnumerable<TResultItem>>> executeQueryFunc,
+            CancellationToken cancellationToken)
+        {
+            if (batchSize <= 0)
+            {
+                return executeQueryFunc(input.ToList()).ToAsyncEnumerable(cancellationToken);
+            }
+
+            return input
+                .Chunk(batchSize)
+                .ToAsyncEnumerable()
+                .SelectManyAwait(async batch => (await executeQueryFunc(batch)).ToAsyncEnumerable());
+        }
+
+        private static async IAsyncEnumerable<TResultItem> ToAsyncEnumerable<TResultItem>(this Task<IEnumerable<TResultItem>> input, CancellationToken cancellationToken)
+        {
+            var items = await input;
+            foreach (var item in items)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                yield return item;
+            }
+        }
+    }
+}
