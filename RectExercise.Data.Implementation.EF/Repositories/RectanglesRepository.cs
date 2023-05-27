@@ -1,5 +1,4 @@
-﻿using LinqKit;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using RectExercise.Application.Contract.DTO;
 using RectExercise.Data.Contract.Repositories;
@@ -7,7 +6,6 @@ using RectExercise.Data.Implementation.EF.Configuration;
 using RectExercise.Data.Implementation.EF.Database;
 using RectExercise.Data.Implementation.EF.Utilities;
 using RectExercise.Domain.Contract.Models;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace RectExercise.Data.Implementation.EF.Repositories
@@ -36,13 +34,11 @@ namespace RectExercise.Data.Implementation.EF.Repositories
 
         private async Task<IReadOnlyList<Rectangle>> GetRectanglesByMatchingPointsInternalAsync(IReadOnlyList<PointDto> points, CancellationToken cancellationToken)
         {
-            var containsPointsPredicate = points
+            return await points
                 .Select(ConvertToPredicateExpression)
-                .Aggregate(PredicateBuilder.New<Rectangle>(), (result, expr) => result.Or(expr));
-
-            return await _dbContext.Rectangles
-                .Where(containsPointsPredicate)
-                .ToListAsync(cancellationToken);
+                .Select(x => _dbContext.Rectangles.Where(x))
+                .Aggregate((res, x) => res.Concat(x))
+                .ToListAsync();
 
             static Expression<Func<Rectangle, bool>> ConvertToPredicateExpression(PointDto point) =>
                 rect => point.X >= rect.Left && point.X <= rect.Right &&
