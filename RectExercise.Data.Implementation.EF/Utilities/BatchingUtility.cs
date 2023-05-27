@@ -6,7 +6,7 @@
             IEnumerable<TInputItem> input,
             int batchSize,
             Func<IReadOnlyList<TInputItem>, Task<IEnumerable<TResultItem>>> executeQueryFunc,
-            CancellationToken cancellationToken)
+            CancellationToken cancellationToken = default)
         {
             if (batchSize <= 0)
             {
