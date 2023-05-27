@@ -8,14 +8,11 @@ namespace RectExercise.WebApi.Host.Controllers
     [Route("rectangles")]
     public class RectanglesController : ControllerBase
     {
-        private readonly ILogger<RectanglesController> _logger;
         private readonly IRectanglesService _rectanglesService;
 
         public RectanglesController(
-            ILogger<RectanglesController> logger,
             IRectanglesService rectanglesService)
         {
-            _logger = logger;
             _rectanglesService = rectanglesService;
         }
 
