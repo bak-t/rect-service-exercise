@@ -10,7 +10,12 @@
         {
             if (batchSize <= 0)
             {
-                return executeQueryFunc(input.ToList()).ToAsyncEnumerable(cancellationToken);
+                var queryArg = input switch
+                {
+                    IReadOnlyList<TInputItem> list => list,
+                    _ => input.ToList()
+                };
+                return executeQueryFunc(queryArg).ToAsyncEnumerable(cancellationToken);
             }
 
             return input
