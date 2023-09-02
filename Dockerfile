@@ -1,5 +1,7 @@
+ARG dotnet_version=7.0
+
 # https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:$dotnet_version AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
@@ -31,7 +33,7 @@ COPY RectExercise.WebApi.Host/. ./RectExercise.WebApi.Host/
 RUN dotnet publish -c release -o /app --no-restore ./RectExercise.WebApi.Host/RectExercise.WebApi.Host.csproj
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
+FROM mcr.microsoft.com/dotnet/aspnet:$dotnet_version
 WORKDIR /app
 COPY --from=build /app ./
 
